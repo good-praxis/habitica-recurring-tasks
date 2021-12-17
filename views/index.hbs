@@ -32,9 +32,15 @@
     </div>
     <div class='nes-container'>
       <div class='nes-field'>
-        <form action='/' method='post'>
+        <form
+          name='login_form'
+          action='/'
+          method='post'
+          enctype='application/x-www-form-urlencoded'
+        >
           <label for='name_field'>Your User ID</label>
           <input
+            name='user_id'
             type='text'
             id='name_field'
             class='nes-input'
@@ -44,6 +50,7 @@
           />
           <label for='api_key_field'>Your API Key</label>
           <input
+            name='api_key'
             type='password'
             id='api_key_field'
             class='nes-input'
