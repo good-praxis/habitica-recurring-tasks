@@ -1,16 +1,12 @@
-import { Body, Controller, Get, Post, Render } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
+import { RendererService } from './renderer/renderer.service';
 
 @Controller()
 export class AppController {
-  @Get()
-  @Render('index')
-  root() {
-    return { message: 'Hello world!' };
-  }
+  constructor(private readonly rendererService: RendererService) {}
 
-  @Post()
-  @Render('index')
-  loginRequested(@Body() body: any) {
-    return { message: 'Login requested!' };
+  @Get()
+  async root() {
+    return await this.rendererService.renderFile('index');
   }
 }

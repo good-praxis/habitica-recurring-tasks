@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { EncryptionService } from './encryption/encryption.service';
+import { RendererService } from './renderer/renderer.service';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -13,6 +14,6 @@ import { EncryptionService } from './encryption/encryption.service';
     }),
   ],
   controllers: [AppController],
-  providers: [EncryptionService],
+  providers: [EncryptionService, RendererService],
 })
 export class AppModule {}
