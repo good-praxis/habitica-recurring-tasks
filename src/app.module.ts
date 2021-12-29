@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { EncryptionService } from './encryption/encryption.service';
 import { RendererService } from './renderer/renderer.service';
+import { EncryptionModule } from './encryption/encryption.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -12,8 +13,9 @@ import { RendererService } from './renderer/renderer.service';
       database: '../db/app.db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
+    EncryptionModule,
   ],
   controllers: [AppController],
-  providers: [EncryptionService, RendererService],
+  providers: [RendererService],
 })
 export class AppModule {}
