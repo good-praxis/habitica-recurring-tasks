@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
-import { EncryptionService } from './encryption/encryption.service';
+import { UserModule } from './user/user.module';
 import { RendererService } from './renderer/renderer.service';
 import { EncryptionModule } from './encryption/encryption.module';
 @Module({
@@ -13,6 +13,7 @@ import { EncryptionModule } from './encryption/encryption.module';
       database: '../db/app.db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
+    UserModule,
     EncryptionModule,
   ],
   controllers: [AppController],
