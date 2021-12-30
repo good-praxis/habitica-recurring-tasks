@@ -3,7 +3,7 @@
 !.test.env
 
 # database
-*.db
+*.sqlite
 
 # compiled output
 /dist

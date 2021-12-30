@@ -6,7 +6,7 @@ import { existsSync, writeFileSync } from 'fs';
 
 async function bootstrap() {
   // ensure that the database exists
-  const dbPath = join(__dirname, '..', 'db', 'app.db');
+  const dbPath = join(__dirname, '..', 'db', 'app.sqlite');
   if (!existsSync(dbPath)) {
     writeFileSync(dbPath, '');
   }
