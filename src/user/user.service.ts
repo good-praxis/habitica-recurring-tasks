@@ -18,16 +18,29 @@ export class UserService {
           user_id,
         },
       })
-      .catch((error) => {
-        // TODO: handle error -> create new user
-        throw error;
+      .catch(() => {
+        // Assuming this is a 404 error
+        throw new Error('User not found');
       });
 
-    // verify api_key
-    if (api_key === this.encryptionService.decryptApiKey(result)) {
-      return result;
-    } else {
-      throw new Error('Invalid api_key'); // TODO: handle error -> no match
+    // verification of api_key is done in the auth service
+    return result;
+  }
+
+  async create({ user_id, api_key }) {
+    if (await this.userRepository.findOne({ user_id })) {
+      return;
     }
+
+    const user = this.encryptionService.encryptApiKey(
+      { user_id } as User,
+      api_key,
+    );
+    await this.userRepository.save(user);
+    return await this.userRepository.findOne({
+      where: {
+        user_id,
+      },
+    });
   }
 }

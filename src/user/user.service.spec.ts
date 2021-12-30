@@ -31,9 +31,17 @@ describe('UserService', () => {
         }
       });
     }),
+
+    save: jest.fn((target) => {
+      mockRepository.repo.push(target);
+    }),
   };
+
   const mockEncryptionService = {
-    decryptApiKey: jest.fn((user: User) => user.api_key),
+    encryptApiKey: jest.fn((target, api_key) => {
+      target.api_key = api_key;
+      return target;
+    }),
   };
 
   beforeEach(async () => {
@@ -62,12 +70,13 @@ describe('UserService', () => {
     });
   });
 
-  it("should error if the api_key doesn't match", () => {
+  it("should not error if the api_key doesn't match", () => {
     const user_id = 'user_id2';
     const api_key = 'faulty_key';
 
-    return service.findOne(user_id, api_key).catch((error) => {
-      expect(error.message).toEqual('Invalid api_key');
+    return service.findOne(user_id, api_key).then((result) => {
+      expect(result.user_id).toEqual(user_id);
+      expect(result.api_key).not.toEqual(api_key);
     });
   });
 

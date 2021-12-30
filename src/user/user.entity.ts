@@ -6,12 +6,12 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   user_id: string;
 
   @Column()
   api_key: Buffer;
 
-  @Column({ default: randomBytes(256) })
+  @Column({ default: null })
   secret: Buffer;
 }

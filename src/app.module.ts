@@ -16,7 +16,6 @@ import { AuthModule } from './auth/auth.module';
       entities: [join(__dirname, '**', '**.entity{.ts,.js}')],
       migrations: [join(__dirname, '..', 'db', 'migrations', '*{.ts,.js}')],
       synchronize: true,
-      logging: 'all',
     }),
     UserModule,
     EncryptionModule,

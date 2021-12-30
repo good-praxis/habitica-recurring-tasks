@@ -32,6 +32,10 @@ export class EncryptionService {
   }
 
   getSecret(user: User): Buffer {
+    // If user.secret is undefined, create a new secret
+    if (!user.secret) {
+      user.secret = randomBytes(32);
+    }
     // returns APP_SECRET concatenated with user secret
     const app_secret = Buffer.from(process.env.APP_SECRET, 'base64');
     return Buffer.concat([app_secret, user.secret]);
