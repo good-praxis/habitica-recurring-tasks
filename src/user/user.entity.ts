@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import { randomBytes } from 'crypto';
 
 @Entity()
 export class User {

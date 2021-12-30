@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { RendererService } from './renderer/renderer.service';
 import { EncryptionModule } from './encryption/encryption.module';
 import { AuthModule } from './auth/auth.module';
+import { SessionModule } from './session/session.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -20,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
     UserModule,
     EncryptionModule,
     AuthModule,
+    SessionModule,
   ],
   controllers: [AppController],
   providers: [RendererService],
