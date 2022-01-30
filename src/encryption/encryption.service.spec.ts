@@ -68,4 +68,16 @@ describe('EncryptionService', () => {
     const api_key = service.decryptApiKey(user);
     expect(api_key).toBe('api_key');
   });
+
+  it('should be able to handle full-sized keys', () => {
+    let user = new User();
+    user.user_id = 'full-sized-key';
+    user.secret = randomBytes(32);
+    user = service.encryptApiKey(user, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+    console.log(user);
+
+    const api_key = service.decryptApiKey(user);
+    expect(user.api_key.length).toBe(64);
+    expect(api_key).toBe('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+  });
 });
