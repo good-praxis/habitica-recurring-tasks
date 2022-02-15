@@ -29,7 +29,7 @@ export class UserService {
 
   async create({ user_id, api_key }) {
     if (await this.userRepository.findOne({ user_id })) {
-      return;
+      return; // TODO: return proper code?
     }
 
     const user = this.encryptionService.encryptApiKey(

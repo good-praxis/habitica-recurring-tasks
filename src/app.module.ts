@@ -4,7 +4,6 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { UserModule } from './user/user.module';
-import { RendererService } from './renderer/renderer.service';
 import { EncryptionModule } from './encryption/encryption.module';
 import { AuthModule } from './auth/auth.module';
 import { SessionModule } from './session/session.module';
@@ -24,6 +23,6 @@ import { SessionModule } from './session/session.module';
     SessionModule,
   ],
   controllers: [AppController],
-  providers: [RendererService],
+  providers: [],
 })
 export class AppModule {}

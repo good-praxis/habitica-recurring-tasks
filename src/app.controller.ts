@@ -1,26 +1,10 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Request,
-  UseGuards,
-} from '@nestjs/common';
+import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
 import { LocalAuthGuard } from './auth/local-auth.guard';
-import { RendererService } from './renderer/renderer.service';
 import { UserService } from './user/user.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly rendererService: RendererService,
-    private readonly userService: UserService,
-  ) {}
-
-  @Get()
-  async root() {
-    return await this.rendererService.renderFile('index');
-  }
+  constructor(private readonly userService: UserService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
@@ -31,6 +15,7 @@ export class AppController {
 
   @Post('create')
   async create(@Body() data) {
+    // TODO: validate data
     this.userService.create(data);
   }
 }
