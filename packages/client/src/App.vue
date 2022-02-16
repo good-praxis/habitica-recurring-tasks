@@ -1,13 +1,12 @@
 <template>
-  <div>Hello {{ name }}!</div>
+  <div><Header /></div>
 </template>
 
 <script lang="ts">
+import { Header } from '@hrt/components';
 export default {
-  data() {
-    return {
-      name: 'Vue',
-    };
+  components: {
+    Header,
   },
 };
 </script>
