@@ -9,7 +9,9 @@ import { AuthModule } from './auth/auth.module';
 import { SessionModule } from './session/session.module';
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: join(__dirname, '..', '..', '..', '.env'),
+    }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: join(__dirname, '..', 'db', 'app.sqlite'),
