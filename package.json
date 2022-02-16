@@ -2,6 +2,7 @@
   "name": "habitica-recurring-tasks",
   "private": true,
   "devDependencies": {
+    "@parcel/transformer-vue": "^2.3.1",
     "lerna": "^4.0.0"
   }
 }
