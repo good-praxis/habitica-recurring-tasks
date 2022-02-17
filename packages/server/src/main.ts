@@ -28,10 +28,6 @@ async function bootstrap() {
       }).connect(sessionRepository),
     }),
   );
-
-  app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views'));
-
   await app.listen(3000);
 }
 bootstrap();

@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { User } from '../user/user.entity';
 import { EncryptionService } from './encryption.service';
 import { hkdfSync, randomBytes } from 'crypto';
+import { join } from 'path';
 import { ConfigModule } from '@nestjs/config';
 
 describe('EncryptionService', () => {
@@ -9,7 +10,11 @@ describe('EncryptionService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot({ envFilePath: ['.test.env'] })],
+      imports: [
+        ConfigModule.forRoot({
+          envFilePath: join(__dirname, '..', '..', '..', '..', '.test.env'),
+        }),
+      ],
       providers: [EncryptionService],
     }).compile();
 
@@ -74,7 +79,6 @@ describe('EncryptionService', () => {
     user.user_id = 'full-sized-key';
     user.secret = randomBytes(32);
     user = service.encryptApiKey(user, 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
-    console.log(user);
 
     const api_key = service.decryptApiKey(user);
     expect(user.api_key.length).toBe(64);
