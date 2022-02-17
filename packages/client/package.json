@@ -7,7 +7,7 @@
   "alias": {},
   "scripts": {
     "format": "prettier --config ../../.prettierrc --write \"src/**/*.ts\" ",
-    "start": "parcel --cache-dir ./.parcel-cache",
+    "start": "parcel --no-cache",
     "build": "parcel build --cache-dir ./.parcel-cache",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "vue": "^3.2.31",
-    "@hrt/components": "^0.0.0"
+    "@hrt/components": "latest"
   }
 }
