@@ -1,5 +1,5 @@
 <template>
-  <div><Header /></div>
+  <div class="container mx-auto"><Header /></div>
 </template>
 
 <script lang="ts">
