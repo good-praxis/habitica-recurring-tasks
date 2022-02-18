@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "@hrt/client",
   "version": "0.0.0",
   "description": "web client for Habitica recurring tasks",
   "private": true,
@@ -26,6 +26,6 @@
   },
   "dependencies": {
     "vue": "^3.2.31",
-    "@hrt/components": "latest"
+    "@hrt/components": "^0.0.0"
   }
 }
