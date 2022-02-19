@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Header } from '@hrt/components';
+import Header from '@/components/Header.vue';
+
 export default {
   components: {
     Header,
