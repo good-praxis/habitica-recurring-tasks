@@ -1,13 +1,13 @@
 <template>
-  <div class="container mx-auto"><Header /></div>
+  <div class="container mx-auto my-3"><HrtTitle /></div>
 </template>
 
 <script lang="ts">
-import Header from '@/components/Header.vue';
+import HrtTitle from '@/components/HrtTitle.vue';
 
 export default {
   components: {
-    Header,
+    HrtTitle,
   },
 };
 </script>
